@@ -64,34 +64,38 @@ const BenefitSection = () => {
 
           <div className="mt-20 col-center">
             <ClipPathTitle
-              title={"24-Hour Hackathon"}
-              color={"#faeade"}
-              bg={"#c88e64"}
+              title={"24-HOUR HACKATHON"}
+              color={"#F5F5F5"}
+              bg={"#0A0A0C"}
               className={"first-title"}
-              borderColor={"#222123"}
+              borderColor={"#ff003383"}
             />
+
             <ClipPathTitle
-              title={"₹50K Prize Pool"}
-              color={"#222123"}
-              bg={"#faeade"}
+              title={"₹1.4L PRIZE POOL"}
+              color={"#F5F5F5"}
+              bg={"#16161C"}
               className={"second-title"}
-              borderColor={"#222123"}
+              borderColor={"#ff003383"}
             />
+
             <ClipPathTitle
-              title={"Two Power Domains"}
-              color={"#faeade"}
-              bg={"#7F3B2D"}
+              title={"TWO POWER DOMAINS"}
+              color={"#E50914"}
+              bg={"#0F0F14"}
               className={"third-title"}
-              borderColor={"#222123"}
+              borderColor={"#ff003383"}
             />
+
             <ClipPathTitle
-              title={"Real-World Challenges"}
-              color={"#2E2D2F"}
-              bg={"#FED775"}
+              title={"REAL-WORLD CHALLENGES"}
+              color={"#F5F5F5"}
+              bg={"#0F0F14"}
               className={"fourth-title"}
-              borderColor={"#222123"}
+              borderColor={"#ff003383"}
             />
           </div>
+
 
           <div className="md:mt-0 mt-10">
             <p>And much more ...</p>

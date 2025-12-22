@@ -15,12 +15,19 @@ const ClipPathTitle = ({ title, color, bg, className, borderColor }) => {
           }}
         >
           <h2
-            style={{
-              color: color,
-            }}
-          >
-            {title}
-          </h2>
+          style={{
+            color: color,
+            textShadow: `
+              0 0 6px ${borderColor},
+              0 0 14px ${borderColor},
+              0 0 30px ${borderColor}
+            `,
+          }}
+        >
+          {title}
+        </h2>
+
+
         </div>
       </div>
     </div>
