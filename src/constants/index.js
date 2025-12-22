@@ -9,26 +9,6 @@ const flavorlists = [
     color: "red",
     rotation: "md:rotate-[8deg] rotate-0",
   },
-  {
-    name: "Pre-trained Models",
-    color: "blue",
-    rotation: "md:rotate-[-8deg] rotate-0",
-  },
-  {
-    name: "RAG Fusion",
-    color: "orange",
-    rotation: "md:rotate-[8deg] rotate-0",
-  },
-  {
-    name: "Model Optimization",
-    color: "white",
-    rotation: "md:rotate-[-8deg] rotate-0",
-  },
-  {
-    name: "Data Science",
-    color: "black",
-    rotation: "md:rotate-[8deg] rotate-0",
-  },
 ];
 
 const nutrientLists = [

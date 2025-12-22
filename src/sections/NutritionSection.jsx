@@ -77,17 +77,17 @@ const NutritionSection = () => {
         className="absolute bottom-0 left-0 w-64 h-64 object-cover opacity-10 mix-blend-overlay rotate-180"
         alt="accent"
       />
-      <img
+      {/* <img
         src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=400&fit=crop"
         alt="Data Visualization"
         className="w-full object-cover relative z-10"
-      />
+      /> */}
 
-      <img 
+      {/* <img 
         src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop" 
         alt="Data Analytics" 
         className="big-img" 
-      />
+      /> */}
 
       <div className="flex md:flex-row flex-col justify-between md:px-10 px-5 mt-14 md:mt-0">
         <div className="relative inline-block md:translate-y-20">
