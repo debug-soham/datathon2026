@@ -67,13 +67,13 @@ const NutritionSection = () => {
   return (
     <section className="nutrition-section">
       {/* Upside Down SVG Accents */}
-      <img 
-        src="/images/red-bg.svg" 
+      <img
+        src="/images/red-bg.svg"
         className="absolute top-0 right-0 w-64 h-64 object-cover opacity-10 mix-blend-overlay"
         alt="accent"
       />
-      <img 
-        src="/images/white-bg.svg" 
+      <img
+        src="/images/white-bg.svg"
         className="absolute bottom-0 left-0 w-64 h-64 object-cover opacity-10 mix-blend-overlay rotate-180"
         alt="accent"
       />
@@ -110,31 +110,31 @@ const NutritionSection = () => {
 
         <div className="flex md:justify-center items-center translate-y-5">
           <div className="md:max-w-xs max-w-md">
-            <p className="text-lg md:text-right text-balance font-paragraph">
+            <p className="text-lg md:text-right text-balance">
               Master cutting-edge technologies including Generative AI, Core ML,
               RAG Fusion, and model optimization techniques
             </p>
           </div>
         </div>
+      </div>
 
-        <div className="nutrition-box">
-          <div className="list-wrapper">
-            {lists.map((nutrient, index) => (
-              <div key={index} className="relative flex-1 col-center">
-                <div>
-                  <p className="md:text-lg font-paragraph">{nutrient.label}</p>
-                  <p className="font-paragraph text-sm mt-2">up to</p>
-                  <p className="text-2xl md:text-4xl tracking-tighter font-bold">
-                    {nutrient.amount}
-                  </p>
-                </div>
-
-                {index !== lists.length - 1 && (
-                  <div className="spacer-border" />
-                )}
+      <div className="nutrition-box">
+        <div className="list-wrapper">
+          {lists.map((nutrient, index) => (
+            <div key={index} className="relative flex-1 col-center">
+              <div>
+                <p className="md:text-lg font-paragraph">{nutrient.label}</p>
+                <p className="font-paragraph text-sm mt-2">up to</p>
+                <p className="text-2xl md:text-4xl tracking-tighter font-bold">
+                  {nutrient.amount}
+                </p>
               </div>
-            ))}
-          </div>
+
+              {index !== lists.length - 1 && (
+                <div className="spacer-border" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
