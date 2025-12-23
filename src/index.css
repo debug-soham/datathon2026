@@ -199,11 +199,12 @@ body::-webkit-scrollbar {
     }
 
     .nutrition-box {
-      @apply absolute md:bottom-16 bottom-5 w-full md:px-0 px-5;
+  @apply relative w-full flex justify-center mt-24 md:mt-32 px-5;
 
       .list-wrapper {
-        @apply bg-[#1a0000] rounded-full border-[.5vw] border-red mx-auto max-w-7xl md:py-8 py-5 md:px-0 px-5 flex justify-between items-center;
-        box-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 0, 0.2);
+          @apply bg-[#1a0000] rounded-full border-[.3vw] border-red mx-auto max-w-7xl 
+         md:py-8 py-5 md:px-10 px-5 
+         flex justify-between items-center;
 
         p {
           @apply text-milk;

@@ -24,6 +24,7 @@ const NutritionSection = () => {
     const titleSplit = SplitText.create(".nutrition-title", {
       type: "chars",
     });
+
     const paragraphSplit = SplitText.create(".nutrition-section p", {
       type: "words, lines",
       linesClass: "paragraph-line",
@@ -35,6 +36,7 @@ const NutritionSection = () => {
         start: "top center",
       },
     });
+
     contentTl
       .from(titleSplit.chars, {
         yPercent: 100,
@@ -65,77 +67,115 @@ const NutritionSection = () => {
   });
 
   return (
-    <section className="nutrition-section">
-      {/* Upside Down SVG Accents */}
-      <img 
-        src="/images/red-bg.svg" 
-        className="absolute top-0 right-0 w-64 h-64 object-cover opacity-10 mix-blend-overlay"
-        alt="accent"
+    <section className="nutrition-section relative overflow-hidden">
+
+      {/* Stranger Things Upside Down Background */}
+      <img
+        src="/images/lbg.png"
+        alt="Upside Down Background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <img 
-        src="/images/white-bg.svg" 
-        className="absolute bottom-0 left-0 w-64 h-64 object-cover opacity-10 mix-blend-overlay rotate-180"
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/60 z-[1]" />
+
+      {/* Accent SVGs */}
+      <img
+        src="/images/red-bg.svg"
+        className="absolute top-0 right-0 w-64 h-64 opacity-10 mix-blend-overlay z-[2]"
         alt="accent"
       />
       <img
-        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=400&fit=crop"
-        alt="Data Visualization"
-        className="w-full object-cover relative z-10"
+        src="/images/white-bg.svg"
+        className="absolute bottom-0 left-0 w-64 h-64 opacity-10 mix-blend-overlay rotate-180 z-[2]"
+        alt="accent"
       />
 
-      <img 
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop" 
-        alt="Data Analytics" 
-        className="big-img" 
-      />
+     <div className="relative z-10 flex flex-col md:px-10 px-5 mt-14 md:mt-0">
 
-      <div className="flex md:flex-row flex-col justify-between md:px-10 px-5 mt-14 md:mt-0">
+        {/* LEFT TITLE */}
         <div className="relative inline-block md:translate-y-20">
           <div className="general-title relative flex flex-col justify-center items-center gap-24">
+
             <div className="overflow-hidden place-self-start">
-              <h1 className="nutrition-title">Skills that</h1>
+              <h1 className="nutrition-title text-white relative z-20 -mb-px flicker-text">Skills that</h1>
             </div>
+
             <div
-              style={{
-                clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-              }}
-              className="nutrition-text-scroll place-self-start"
+            className="nutrition-text-scroll place-self-start opacity-0"
+          >
+            <h2
+              className="
+                text-red-500
+                drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]
+                drop-shadow-[0_0_16px_rgba(255,0,0,0.6)]
+              "
             >
-              <div className="bg-yellow-brown pb-5 md:pt-0 pt-3 md:px-5 px-3">
-                <h2 className="text-milk-yellow">Drive Innovation</h2>
-              </div>
-            </div>
+              Drive Innovation
+            </h2>
+          </div>
+
+
           </div>
         </div>
 
-        <div className="flex md:justify-center items-center translate-y-5">
-          <div className="md:max-w-xs max-w-md">
-            <p className="text-lg md:text-right text-balance font-paragraph">
-              Master cutting-edge technologies including Generative AI, Core ML,
-              RAG Fusion, and model optimization techniques
-            </p>
-          </div>
-        </div>
+        {/* RIGHT TEXT */}
+        <div className="flex md:justify-end items-center -translate-y-14">
+  <div className="md:max-w-sm max-w-lg">
+    <p className="text-xl md:text-2xl md:text-right text-balance font-heading font-semibold text-white leading-relaxed tracking-wide">
+      Master cutting-edge technologies like <span className="text-red-500">Generative AI</span>, 
+      <span className="text-red-500"> Core ML</span>, <span className="text-red-500">RAG Fusion</span>, 
+      and advanced <span className="text-red-500">model optimization</span> techniques.
+    </p>
+  </div>
+</div>
 
-        <div className="nutrition-box">
-          <div className="list-wrapper">
-            {lists.map((nutrient, index) => (
-              <div key={index} className="relative flex-1 col-center">
-                <div>
-                  <p className="md:text-lg font-paragraph">{nutrient.label}</p>
+
+
+        {/* STATS BOX */}
+        <div className="relative mt-24 mx-auto w-fit">
+
+          {/* GLOW LAYER (only glow, behind) */}
+          <div className="absolute inset-0 rounded-full blur-xl bg-red-500/50" />
+
+          {/* ACTUAL PILL */}
+          <div
+            className="
+              relative z-10
+              bg-black/70 backdrop-blur-md
+              rounded-full
+              border border-red-300
+              overflow-hidden
+              shadow-[0_0_20px_rgba(255,0,0,0.5),0_0_40px_rgba(255,0,0,0.35)]
+            "
+          >
+            <div className="list-wrapper flex items-center gap-10 px-14 py-8">
+              {lists.map((nutrient, index) => (
+                <div
+                  key={index}
+                  className="relative w-[190px] col-center text-center"
+                >
+                  <p className="md:text-lg font-paragraph">
+                    {nutrient.label}
+                  </p>
+
                   <p className="font-paragraph text-sm mt-2">up to</p>
-                  <p className="text-2xl md:text-4xl tracking-tighter font-bold">
+
+                  <p className="text-2xl md:text-4xl tracking-tighter font-bold text-white">
                     {nutrient.amount}
                   </p>
-                </div>
 
-                {index !== lists.length - 1 && (
-                  <div className="spacer-border" />
-                )}
-              </div>
-            ))}
+                  {index !== lists.length - 1 && (
+                    <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 h-12 w-px bg-red-500/40" />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
+
         </div>
+
+
       </div>
     </section>
   );
