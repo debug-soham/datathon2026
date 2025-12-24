@@ -1,0 +1,227 @@
+:root {
+  --neon-red: #ff0033;
+  --dark-bg: #050505;
+  --track-color: rgba(255, 255, 255, 0.2);
+}
+
+.timeline-section-container {
+  background-color: var(--dark-bg);
+  color: #eee;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  /* Key requirement: Content matches container size */
+  height: 100vh;
+  /* Takes up full viewport height */
+  position: relative;
+  width: 100%;
+  overscroll-behavior: none;
+  /* Prevent bounce effects */
+}
+
+/* --- Typography --- */
+.st-font {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 10px var(--neon-red);
+}
+
+.st-text-glow {
+  text-shadow: 0 0 5px var(--neon-red), 0 0 10px rgba(255, 0, 51, 0.5);
+}
+
+/* --- Background FX --- */
+.bg-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fog-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png') repeat-x;
+  background-size: cover;
+  opacity: 0.2;
+  animation: fogMove 60s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes fogMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -200vw 0;
+  }
+}
+
+/* --- Layout --- */
+
+/* The moving track */
+.horizontal-track {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  padding-left: 50vw;
+  /* Start with some space */
+  padding-right: 50vw;
+  /* Ensure it has width to sit content */
+  width: max-content;
+}
+
+/* The Line */
+.timeline-road {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 0, 51, 0.2);
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+/* --- Nodes & Events --- */
+.event-wrapper {
+  position: relative;
+  width: 400px;
+  /* Distance between nodes */
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node {
+  width: 20px;
+  height: 20px;
+  background: #111;
+  border: 2px solid #555;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.node.active {
+  background: #fff;
+  border-color: var(--neon-red);
+  box-shadow: 0 0 20px var(--neon-red), 0 0 40px var(--neon-red);
+  transform: scale(1.5);
+}
+
+.event-card {
+  position: absolute;
+  width: 300px;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.6s ease-out;
+  transform: translateY(20px);
+}
+
+/* Alternating positions */
+.event-wrapper:nth-child(odd) .event-card {
+  bottom: 60%;
+  /* Above line */
+}
+
+.event-wrapper:nth-child(even) .event-card {
+  top: 60%;
+  /* Below line */
+}
+
+.event-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- The Bicycle --- */
+.bicycle-container {
+  position: absolute;
+  left: 25%;
+  /* Fixed horizontal position */
+  top: 50%;
+  /* Centered vertically on the line */
+  transform: translate(-50%, -100%);
+  /* Sit ON TOP of the line */
+  z-index: 20;
+  width: 100px;
+  pointer-events: none;
+  margin-top: -8px;
+  /* Adjustment to touch the line */
+}
+
+.bike-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+}
+
+/* Removed default infinite animations for physics-based control */
+.wheel {
+  transform-origin: center;
+  /* animation: spin 1s linear infinite; REMOVED */
+}
+
+.bike-body {
+  /* animation: bounce 1s ease-in-out infinite alternate; REMOVED */
+  transform-origin: bottom center;
+}
+
+/* @keyframes spin { ... } REMOVED */
+/* @keyframes bounce { ... } REMOVED */
+
+/* Intro Overlay */
+.scroll-prompt {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  animation: pulse 2s infinite;
+  z-index: 50;
+  text-shadow: 0 0 10px red;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Progress Bar (Optional UI) */
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: var(--neon-red);
+  width: 0%;
+  z-index: 100;
+  box-shadow: 0 0 10px var(--neon-red);
+}
