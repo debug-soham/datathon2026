@@ -113,6 +113,10 @@ body::-webkit-scrollbar {
         transform: scale(1.05);
       }
     }
+
+    .hero-overlay-content {
+      @apply relative z-20;
+    }
   }
 
   .message-content {
@@ -241,12 +245,10 @@ body::-webkit-scrollbar {
     }
 
     .nutrition-box {
-  @apply relative w-full flex justify-center mt-24 md:mt-32 px-5;
+      @apply relative w-full flex justify-center mt-24 md:mt-32 px-5;
 
       .list-wrapper {
-          @apply bg-[#1a0000] rounded-full border-[.3vw] border-red mx-auto max-w-7xl 
-         md:py-8 py-5 md:px-10 px-5 
-         flex justify-between items-center;
+        @apply bg-[#1a0000] rounded-full border-[.3vw] border-red mx-auto max-w-7xl md:py-8 py-5 md:px-10 px-5 flex justify-between items-center;
 
         p {
           @apply text-milk;
@@ -368,4 +370,28 @@ body::-webkit-scrollbar {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Preloader Styles */
+.preloader-container {
+  @apply fixed inset-0 z-[9999] overflow-hidden flex items-center justify-center;
+}
+
+.preloader-content {
+  @apply flex flex-col justify-center items-center gap-8;
+}
+
+.preloader-logo {
+  @apply w-48 md:w-64 h-auto;
+  filter: drop-shadow(0 4px 20px rgba(255, 0, 0, 0.4));
+}
+
+.preloader-bar-container {
+  @apply w-48 md:w-64 h-1 bg-white/10 rounded-full overflow-hidden;
+}
+
+.preloader-bar {
+  @apply w-full h-full bg-gradient-to-r from-red via-red to-red/80 origin-left;
+  transform: scaleX(0);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
 }
