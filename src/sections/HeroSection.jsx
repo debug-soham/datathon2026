@@ -1,9 +1,21 @@
 
+import { useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "./HeroSection.css";
 
 const HeroSection = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://apply.devfolio.co/v2/sdk.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   useGSAP(() => {
     // Logo animations
     gsap.from(".hero-logo-top-left", {
@@ -96,6 +108,22 @@ const HeroSection = () => {
       {/* Content */}
       <div className="hero-content">
         <div className="hero-logo-wrapper">
+          <div style={{ position: "relative", marginBottom: "3.5rem" }}>
+            <div
+              className="apply-button"
+              data-hackathon-slug="datathon-9"
+              data-button-theme="dark-inverted"
+              style={{ height: "44px", width: "312px" }}
+            ></div>
+            <a
+              href="https://datathon-9.devfolio.co/overview"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 10 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="sr-only">Apply with Devfolio</span>
+            </a>
+          </div>
           <div className="hero-datathon-row">
             <p className="hero-side-text hero-left-text">
               7th & 8th <br />
